@@ -9,18 +9,23 @@ public class Person
     private string surname;
     private DateTime dateOfBirth;
         
-    public Person(string name, string surname, DateTime dateOfBirth)
+    public Person(string _name, string _surname, DateTime _dateOfBirth)
     {
-        this.name = name;
-        this.surname = surname;
-        this.dateOfBirth = dateOfBirth;
+        name = _name;
+        surname = _surname;
+        dateOfBirth = _dateOfBirth;
     }
 
     public Person()
     {
         name = "Noname";
         surname = "Nosurname";
-        dateOfBirth = new DateTime(0);
+        dateOfBirth = new DateTime(0,0,0);
+    }
+
+    public static bool checkName(string s)
+    {
+        return Regex.IsMatch(s.Trim(), @"^[a-zA-Z]+$");
     }
 
     public string Name
@@ -28,9 +33,7 @@ public class Person
         get => name;
         set
         {
-            string pattern = @"^[a-zA-Z]+$";
-            bool check = Regex.IsMatch(value, pattern);
-            if (check)
+            if (!String.IsNullOrEmpty(value)&&checkName(value))
             {
                 name = value;
             }
@@ -46,9 +49,7 @@ public class Person
         get => surname;
         set
         {
-            string pattern = @"^[a-zA-Z]+$";
-            bool check = Regex.IsMatch(value, pattern);
-            if (check)
+            if (!String.IsNullOrEmpty(value)&&checkName(value))
             {
                 surname = value;
             }
@@ -64,13 +65,13 @@ public class Person
         get => dateOfBirth;
         set
         {
-            if (DateTime.Now.Year < value.Year)
+            if (DateTime.Now < value)
             {
-                dateOfBirth = new DateTime(value.Year);
+                dateOfBirth = new DateTime(value.Year, value.Month, value.Day);
             }
             else
             {
-                dateOfBirth = new DateTime(0);
+                dateOfBirth = new DateTime(0,0,0);
             }
         }
     }
