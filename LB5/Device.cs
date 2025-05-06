@@ -17,11 +17,11 @@ public class Device
     {
         nameDevice = "Noname";
         price = 0;
-        date = new DateTime(0,0,0);
+        date = DateTime.Now;
     }
     
     public override string ToString()
     {
-        return "Device name"+' '+nameDevice+" \nPrice"+' '+price+"\nDate v"+' '+date;
+        return $"Назва: {nameDevice}, Вартість: {price}, Дата випуску: {date}";
     }
 }

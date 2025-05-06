@@ -20,7 +20,7 @@ public class Person
     {
         name = "Noname";
         surname = "Nosurname";
-        dateOfBirth = new DateTime(0,0,0);
+        dateOfBirth = new DateTime(2000,1,1);
     }
 
     public static bool checkName(string s)
@@ -78,12 +78,12 @@ public class Person
 
     public override string ToString()
     {
-        return "Name"+' '+name+" \nSurname"+' '+surname+"\nDateOfBirth"+' '+dateOfBirth;
+        return $"{name} {surname}, Дата народження: {dateOfBirth}";
     }
 
     public string ToShortString()
     {
-        return "Name"+' '+name+" \nSurname"+' '+surname;
+        return $"{name} {surname}";
     }
     
 }
